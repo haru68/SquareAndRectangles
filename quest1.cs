@@ -2,14 +2,9 @@ using System;
 
 namespace Geometry
 {
-    class Polygon
+    public abstract class Polygon
     {
-        private double area;
-
-        public void GetArea(double width, double height)
-        {
-            area = width * area;
-        }
+        public abstract double GetArea();
     }
 
 
@@ -37,26 +32,27 @@ namespace Geometry
         {
             return height;
         }
+
+        public override double GetArea()
+        {
+            double area = height * width;
+            return area;
+        }
     }
 
     class Square : Polygon
     {
-        private double side;
+        private double _side;
             
-        public void SetWidth(double width)
+        public void SetWidth(double side)
         {
-            // Because a square must have its sides equal, I also set
-            // its height to the given width
-            this.side = width;
-            this.side = width;
+            this._side = side;
         }
 
-        public void SetHeight(double height)
+        public override double GetArea()
         {
-            // Because a square must have its sides equal, I also set
-            // its width to the given height
-            this.side = height;
-            this.side = height;
+            double area = _side * _side;
+            return area;
         }
     }
 }
